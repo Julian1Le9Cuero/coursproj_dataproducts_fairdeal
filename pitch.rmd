@@ -1,0 +1,57 @@
+---
+title: "FairDeal, where house selling becomes easy"
+author: "Julian Cuero"
+date: "December 21, 2020"
+output:
+  ioslides_presentation:
+    css: styles.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Background
+- Are you afraid of selling your house and lose money?
+
+- Do you want to get the best results without having to hire a real estate agent?
+
+- Well, you solution has arrived, with [***FairDeal***]( https://cuerojulian.shinyapps.io/finalproject/) now you can get the price of your house in less than a couple of minutes!
+
+
+## What is **FairDeal**?
+- [FairDeal](https://cuerojulian.shinyapps.io/finalproject/) allows you to estimate the price of your house! 
+
+- You just provide some of the house data like the number of bathrooms and bedrooms, the total square foot (sqft) living, total sqft lot and its zipcode, we handle the rest.
+
+- What are you waiting for?
+
+## How all this magic is possible?
+- Our team of data science experts predicts the price with a linear model trained with public King County house data from Seattle.
+
+
+- You can even obtain characteristics and prices from similar houses to yours so that you can feel even more confident of selling it!
+
+## Still not sure? Here's a Quick Demo
+```{r include=FALSE}
+house_data <- read.csv("kc_house_data.csv")
+```
+
+```{r pressure, echo=TRUE, comment=""}
+model1 <- lm(price~sqft_living+
+            bathrooms+bedrooms+
+            zipcode+sqft_lot,
+            data=house_data)
+
+prediction = predict(model1, newdata = data.frame(zipcode=98125,                           bathrooms=1,
+                                                  bedrooms=3,                              sqft_lot=5600,
+                                                  sqft_living=1160))
+
+paste("Price: ",
+      "$",
+      as.character(round(prediction,1)),
+      " dollars",
+      sep="")
+```
+
+**Visit our [website]( https://cuerojulian.shinyapps.io/finalproject/) for more!**

@@ -1,0 +1,17 @@
+h2{
+    color: #f2d974;
+    cursor: pointer;
+}
+
+h2:hover{
+    color: #000;
+}
+
+a{
+   text-decoration: none;
+   color: #000;
+}
+
+p:hover{
+    text-shadow: 5px 5px 10px #583d72;
+}
